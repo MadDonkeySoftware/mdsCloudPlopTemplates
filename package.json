@@ -1,0 +1,30 @@
+{
+  "name": "mds-cloud-plop-templates",
+  "version": "1.0.0",
+  "description": "a collection of useful templates for mds cloud service development",
+  "main": "src/plopfile.mjs",
+  "type": "module",
+  "scripts": {
+    "build": "rimraf ./dist && rollup -c ./rollup.config.js && fse copy ./src/templates ./dist/templates",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint src/**",
+    "pretty": "prettier -w ./src",
+    "pretty-check": "prettier -c ./src"
+  },
+  "keywords": [
+    "plop",
+    "mdsCloud"
+  ],
+  "author": "MadDonkeySoftware",
+  "license": "MIT",
+  "devDependencies": {
+    "@atao60/fse-cli": "^0.1.7",
+    "eslint": "^8.21.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "plop": "^3.1.1",
+    "prettier": "^2.7.1",
+    "rimraf": "^3.0.2",
+    "rollup": "^2.77.3"
+  }
+}

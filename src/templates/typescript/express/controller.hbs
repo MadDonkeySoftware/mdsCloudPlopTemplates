@@ -1,0 +1,15 @@
+import { Request, Response, Router } from 'express';
+
+export function {{nameToCamelCase name}}() {
+  const router = Router();
+
+  router.get(
+    '/',
+    async function handleGet(request: Request, response: Response) {
+      response.status(200);
+      response.send({ status: 'OK' });
+    },
+  );
+
+  return router;
+}

@@ -1,0 +1,20 @@
+/* eslint-disable jest/expect-expect */
+import supertest from 'supertest';
+import { Express } from 'express';
+
+import * as src from '../..';
+
+describe('{{nameToCamelCase name }} test', () => {
+  let app: Express;
+
+  beforeAll(() => {
+    app = src.buildApp();
+  });
+
+  afterAll(() => {
+    jest.restoreAllMocks();
+  });
+
+  // Act / Assert
+  it('returns OK', () => supertest(app).get(`/health`).expect(200));
+});

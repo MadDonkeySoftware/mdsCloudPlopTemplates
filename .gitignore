@@ -1,0 +1,8 @@
+# IDEs
+.vscode/
+
+# Dependencies
+node_modules/
+
+# typescript outputs
+dist/
