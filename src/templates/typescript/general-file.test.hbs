@@ -1,0 +1,15 @@
+import { {{nameToCamelCase name}} } from '../{{name}}';
+
+describe('{{nameToCamelCase name}} test', () => {
+  afterAll(() => {
+    jest.restoreAllMocks();
+  });
+
+  it.skip('UPDATE ME', async () => {
+    // Act
+    const result = await {{nameToCamelCase name}}();
+
+    // Assert
+    expect(result).toBeUndefined();
+  });
+});
