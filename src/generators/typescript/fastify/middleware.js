@@ -6,8 +6,8 @@ export function middlewareGenerator(
   plop,
 ) {
   // simple middleware generator
-  plop.setGenerator('ts-express-simple-middleware', {
-    description: 'express middleware (TypeScript)',
+  plop.setGenerator('ts-fastify-simple-middleware', {
+    description: 'fastify middleware (TypeScript)',
     prompts: [
       {
         type: 'input',
@@ -19,12 +19,17 @@ export function middlewareGenerator(
       {
         type: 'add',
         path: 'src/middlewares/{{name}}.ts',
-        templateFile: 'templates/typescript/express/simple-middleware.hbs',
+        templateFile: 'templates/typescript/fastify/simple-middleware.hbs',
       },
       {
         type: 'add',
         path: 'src/middlewares/__tests__/{{name}}.test.ts',
-        templateFile: 'templates/typescript/express/simple-middleware.test.hbs',
+        templateFile: 'templates/typescript/fastify/simple-middleware.test.hbs',
+      },
+      {
+        type: 'add',
+        path: 'src/middlewares/index.ts',
+        abortOnFail: false,
       },
       {
         type: 'modify',

@@ -6,6 +6,7 @@
   "type": "module",
   "scripts": {
     "build": "rimraf ./dist && rollup -c ./rollup.config.js && fse copy ./src/templates ./dist/templates",
+    "watcher": "nodemon -w ./src -x \"npm run build\"",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint src/**",
     "pretty": "prettier -w ./src",
@@ -19,12 +20,13 @@
   "license": "MIT",
   "devDependencies": {
     "@atao60/fse-cli": "^0.1.7",
-    "eslint": "^8.21.0",
+    "eslint": "^8.22.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
+    "nodemon": "^2.0.19",
     "plop": "^3.1.1",
     "prettier": "^2.7.1",
     "rimraf": "^3.0.2",
-    "rollup": "^2.77.3"
+    "rollup": "^2.78.0"
   }
 }

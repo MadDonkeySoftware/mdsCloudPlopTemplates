@@ -1,0 +1,27 @@
+import { Request, Response, NextFunction } from 'express';
+
+import { {{nameToCamelCase name}} } from '../{{name}}';
+
+describe('{{nameToCamelCase name}} test', () => {
+  afterAll(() => {
+    jest.restoreAllMocks();
+  });
+
+  it.skip('calls next function', async () => {
+    // Arrange
+    const req = {} as unknown as Request;
+    const resp = {} as unknown as Response;
+    const next = jest.fn();
+    
+    // Act
+    await {{nameToCamelCase name}}(
+      req,
+      resp,
+      next as unknown as NextFunction
+    );
+
+    // Assert
+    expect(next).toBeCalledTimes(1);
+    expect(next.mock.calls[0]).toEqual([]);
+  });
+});

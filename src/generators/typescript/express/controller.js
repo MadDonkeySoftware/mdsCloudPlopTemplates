@@ -22,7 +22,7 @@ export function controllerGenerator(
       },
       {
         type: 'add',
-        path: 'src/controllers/__test__/{{name}}.test.ts',
+        path: 'src/controllers/__tests__/{{name}}.test.ts',
         templateFile: 'templates/typescript/express/controller.test.hbs',
       },
       {

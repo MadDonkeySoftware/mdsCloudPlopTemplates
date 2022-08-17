@@ -1,13 +1,19 @@
-import { controllerGenerator } from './express/controller';
-import { middlewareGenerator } from './express/middleware';
+import { controllerGenerator as expressControllerGenerator } from './express/controller';
+import { middlewareGenerator as expressMiddlewareGenerator } from './express/middleware';
+import { controllerGenerator as fastifyControllerGenerator } from './fastify/controller';
+import { middlewareGenerator as fastifyMiddlewareGenerator } from './fastify/middleware';
+import { routerGenerator as fastifyRouterGenerator } from './fastify/route';
 import { generateBarrelFile } from '../../utils/generate-barrel-file';
 
 export function wireExpressGenerators(
   /** @type NodePlopAPI} */
   plop,
 ) {
-  controllerGenerator(plop);
-  middlewareGenerator(plop);
+  expressControllerGenerator(plop);
+  expressMiddlewareGenerator(plop);
+  fastifyControllerGenerator(plop);
+  fastifyMiddlewareGenerator(plop);
+  fastifyRouterGenerator(plop);
 
   plop.setGenerator('ts-stub-with-barrel-file', {
     description: 'generic file stub with barrel file and test (TypeScript)',
@@ -31,8 +37,13 @@ export function wireExpressGenerators(
       },
       {
         type: 'add',
-        path: '{{path}}/__test__/{{name}}.test.ts',
+        path: '{{path}}/__tests__/{{name}}.test.ts',
         templateFile: 'templates/typescript/general-file.test.hbs',
+      },
+      {
+        type: 'add',
+        path: '{{path}}/index.ts',
+        abortOnFail: false,
       },
       {
         type: 'modify',
