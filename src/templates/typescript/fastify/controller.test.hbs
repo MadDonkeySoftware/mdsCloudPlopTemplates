@@ -1,11 +1,18 @@
-/* eslint-disable jest/expect-expect */
-import supertest from 'supertest';
-import { Express } from 'express';
-
+import { FastifyInstance, InjectOptions } from 'fastify';
 import * as src from '../..';
 
 describe('{{nameToCamelCase name }} test', () => {
-  let app: Express;
+  let app: FastifyInstance;
+
+  function makeRequest(overrides: InjectOptions = {}) {
+    return app.inject({
+      ...({
+        url: '/',
+        method: 'GET',
+      } as InjectOptions),
+      ...overrides,
+    });
+  }
 
   beforeAll(() => {
     app = src.buildApp();
@@ -15,6 +22,13 @@ describe('{{nameToCamelCase name }} test', () => {
     jest.restoreAllMocks();
   });
 
-  // Act / Assert
-  it.skip('returns OK', () => supertest(app).get(`/health`).expect(200));
+  it.skip('returns OK', async () => {
+    // Arrange
+
+    // Act
+    const resp = await makeRequest();
+
+    // Assert
+    expect(resp.statusCode).toBe(200);
+  });
 });

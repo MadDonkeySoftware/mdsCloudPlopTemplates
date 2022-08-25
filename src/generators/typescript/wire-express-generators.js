@@ -15,8 +15,8 @@ export function wireExpressGenerators(
   fastifyMiddlewareGenerator(plop);
   fastifyRouterGenerator(plop);
 
-  plop.setGenerator('ts-stub-with-barrel-file', {
-    description: 'generic file stub with barrel file and test (TypeScript)',
+  plop.setGenerator('ts-fn-stub-with-barrel-file', {
+    description: 'generic function file stub with barrel file and test (TypeScript)',
     prompts: [
       {
         type: 'input',
@@ -33,12 +33,45 @@ export function wireExpressGenerators(
       {
         type: 'add',
         path: '{{path}}/{{name}}.ts',
-        templateFile: 'templates/typescript/general-file.hbs',
+        templateFile: 'templates/typescript/general-fn-file.hbs',
       },
       {
         type: 'add',
         path: '{{path}}/__tests__/{{name}}.test.ts',
-        templateFile: 'templates/typescript/general-file.test.hbs',
+        templateFile: 'templates/typescript/general-fn-file.test.hbs',
+      },
+      {
+        type: 'add',
+        path: '{{path}}/index.ts',
+        abortOnFail: false,
+      },
+      {
+        type: 'modify',
+        path: '{{path}}/index.ts',
+        transform: (body, data) => generateBarrelFile(body, data),
+      },
+    ],
+  });
+
+  plop.setGenerator('ts-type-stub-with-barrel-file', {
+    description: 'generic function file stub with barrel file and test (TypeScript)',
+    prompts: [
+      {
+        type: 'input',
+        name: 'name',
+        message: 'file name',
+      },
+      {
+        type: 'input',
+        name: 'path',
+        message: 'relative file path',
+      },
+    ],
+    actions: [
+      {
+        type: 'add',
+        path: '{{path}}/{{name}}.ts',
+        templateFile: 'templates/typescript/general-type-file.hbs',
       },
       {
         type: 'add',
